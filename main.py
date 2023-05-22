@@ -82,7 +82,7 @@ async def fetch(df, dir):
         "aG7HwcOTdKV3mOAPC6oTMUvntBEgPCgntMC4SRpc"
     ) as session:
       
-        for ind in df.index[0:2]:
+        for ind in df.index:
             try:
                 file_name=df['digest'][ind]
                 raw_url=df['raw_url'][ind]
@@ -120,9 +120,9 @@ if __name__ == "__main__":
                 # print('{} populated...'.format(file))
                 # df['content']= df['digest'].apply(populate(dir=file, digest=df['digest']))
                 df.to_csv('{}.csv'.format(file))
-                # pop_from_sites(file, 'sites.txt')
-                # print(f'files done: {files_done}')
-                # files_done+=1
+                pop_from_sites(file, 'sites.txt')
+                print(f'files done: {files_done}')
+                files_done+=1
 
             except Exception as e: print(e)
 
